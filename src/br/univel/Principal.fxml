@@ -1,31 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
-
-<GridPane prefHeight="260.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="br.univel.PrincipalController">
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-   </rowConstraints>
-   <columnConstraints>
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-   </columnConstraints>
-   <children>
-      <Label text="Código" GridPane.hgrow="NEVER" />
-      <Label text="Nome" GridPane.hgrow="NEVER" GridPane.rowIndex="1" />
-      <TextField fx:id="txtCodigo" promptText="Digite o Código" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
-      <TextField fx:id="txtNome" promptText="Digite o Nome" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-      <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#actionSalvar" text="Salvar" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-   </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-</GridPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.univel.PrincipalController">
+	<children>
+		<BorderPane prefHeight="200.0" prefWidth="200.0">
+			<center>
+				<TableView fx:id="tabela" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+					<columns>
+						<TableColumn prefWidth="${tabela.width*0.50}" text="Código">
+							<cellValueFactory>
+								<PropertyValueFactory property="codigo" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="${tabela.width*0.495}" text="Nome">
+							<cellValueFactory>
+								<PropertyValueFactory property="nome" />
+							</cellValueFactory>
+						</TableColumn>
+					</columns>
+					<BorderPane.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</BorderPane.margin>
+				</TableView>
+			</center>
+			<top>
+				<VBox BorderPane.alignment="CENTER">
+					<children>
+						<Label text="Código">
+							<VBox.margin>
+								<Insets left="5.0" top="5.0" />
+							</VBox.margin>
+						</Label>
+						<TextField fx:id="txtCodigo" promptText="Preenchimento obrigatório">
+							<VBox.margin>
+								<Insets left="5.0" right="5.0" />
+							</VBox.margin>
+						</TextField>
+						<Label text="Nome">
+							<VBox.margin>
+								<Insets left="5.0" />
+							</VBox.margin>
+						</Label>
+						<TextField fx:id="txtNome" promptText="Preenchimento obrigatório">
+							<VBox.margin>
+								<Insets left="5.0" right="5.0" />
+							</VBox.margin>
+						</TextField>
+						<HBox>
+							<children>
+								<Button fx:id="btnSalvar" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#actionSalvar" text="Salvar">
+									<HBox.margin>
+										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+									</HBox.margin>
+									<graphic>
+										<ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+											<image>
+												<Image url="@img/save.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</Button>
+							</children>
+						</HBox>
+					</children>
+				</VBox>
+			</top>
+		</BorderPane>
+	</children>
+</StackPane>
